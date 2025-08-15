@@ -25,7 +25,7 @@ export default function Navbar() {
             to="/blog"
             className={({ isActive }) =>
               `flex items-center gap-2 ${
-                isActive ? "text-blue-600 font-semibold" : "text-gray-700"
+                isActive ? "text-yellow-600 font-semibold" : "text-gray-700"
               } hover:text-blue-500`
             }
           >
@@ -36,7 +36,7 @@ export default function Navbar() {
             to="/admin"
             className={({ isActive }) =>
               `flex items-center gap-2 ${
-                isActive ? "text-blue-600 font-semibold" : "text-gray-700"
+                isActive ? "text-yellow-600 font-semibold" : "text-gray-700"
               } hover:text-blue-500`
             }
           >
