@@ -1,14 +1,12 @@
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { updatePost } from "../../store/slices/postsSlice";
 import { FaArrowLeft } from "react-icons/fa";
+import usePosts from "../../hooks/usePosts";
 
 function EditPost() {
   const { id } = useParams();
-  const post = useSelector((state) =>
-    state.posts.posts.find((p) => p.id === id)
-  );
+  const { posts, editPost } = usePosts();
+  const post = posts.find((p) => p.id === id);
 
   const [title, setTitle] = useState("");
   const [excerpt, setExcerpt] = useState("");
@@ -16,7 +14,6 @@ function EditPost() {
   const [image, setImage] = useState("");
   const [author, setAuthor] = useState("");
 
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const TITLE_LIMIT = 100;
@@ -46,7 +43,7 @@ function EditPost() {
       image,
       author,
     };
-    dispatch(updatePost(updatedPost));
+    editPost(updatedPost);
     navigate("/admin/posts");
   };
 

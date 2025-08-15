@@ -1,15 +1,13 @@
-import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { deletePost } from "../../store/slices/postsSlice";
 import { FaArrowLeft, FaEdit, FaTrash } from "react-icons/fa";
+import usePosts from "../../hooks/usePosts";
 
 function AdminPosts() {
-  const posts = useSelector((state) => state.posts.posts);
-  const dispatch = useDispatch();
+  const { posts, removePost } = usePosts();
 
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to delete this post?")) {
-      dispatch(deletePost(id));
+      removePost(id);
     }
   };
 

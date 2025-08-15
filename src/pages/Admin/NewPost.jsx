@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { addPost } from "../../store/slices/postsSlice";
-import { nanoid } from "@reduxjs/toolkit";
 import { FaArrowLeft } from "react-icons/fa";
+import { nanoid } from "@reduxjs/toolkit";
+import usePosts from "../../hooks/usePosts";
 
 function NewPost() {
   const [title, setTitle] = useState("");
@@ -11,7 +10,8 @@ function NewPost() {
   const [content, setContent] = useState("");
   const [image, setImage] = useState("");
   const [author, setAuthor] = useState("");
-  const dispatch = useDispatch();
+
+  const { createPost } = usePosts();
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -28,7 +28,7 @@ function NewPost() {
       date: new Date().toLocaleDateString(),
     };
 
-    dispatch(addPost(newPost));
+    createPost(newPost);
     navigate("/admin/posts");
   };
 
