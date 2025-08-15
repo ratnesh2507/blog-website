@@ -14,6 +14,7 @@ import NewPost from "./pages/Admin/NewPost";
 
 // Route Protection
 import PrivateRoute from "./routes/PrivateRoute";
+import EditPost from "./pages/Admin/EditPost";
 
 function App() {
   return (
@@ -49,6 +50,14 @@ function App() {
           element={
             <PrivateRoute>
               <NewPost />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/admin/posts/edit/:id"
+          element={
+            <PrivateRoute>
+              <EditPost />
             </PrivateRoute>
           }
         />
