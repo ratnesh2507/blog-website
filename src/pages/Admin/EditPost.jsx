@@ -9,13 +9,21 @@ function EditPost() {
   const post = useSelector((state) =>
     state.posts.posts.find((p) => p.id === id)
   );
+
   const [title, setTitle] = useState("");
   const [excerpt, setExcerpt] = useState("");
   const [content, setContent] = useState("");
   const [image, setImage] = useState("");
   const [author, setAuthor] = useState("");
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const TITLE_LIMIT = 100;
+  const EXCERPT_LIMIT = 200;
+  const CONTENT_LIMIT = 5000;
+  const IMAGE_LIMIT = 500;
+  const AUTHOR_LIMIT = 50;
 
   useEffect(() => {
     if (post) {
@@ -55,45 +63,87 @@ function EditPost() {
         <FaArrowLeft /> Back to Posts
       </Link>
       <h2 className="text-2xl font-bold mb-4">Edit Post</h2>
+
       <form onSubmit={handleSubmit} className="space-y-4 max-w-2xl">
-        <input
-          type="text"
-          placeholder="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          className="w-full border p-2 rounded"
-          required
-        />
-        <input
-          type="text"
-          placeholder="Excerpt"
-          value={excerpt}
-          onChange={(e) => setExcerpt(e.target.value)}
-          className="w-full border p-2 rounded"
-          required
-        />
-        <textarea
-          placeholder="Content"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          className="w-full border p-2 rounded h-40"
-          required
-        />
-        <input
-          type="text"
-          placeholder="Image URL"
-          value={image}
-          onChange={(e) => setImage(e.target.value)}
-          className="w-full border p-2 rounded"
-        />
-        <input
-          type="text"
-          placeholder="Author"
-          value={author}
-          onChange={(e) => setAuthor(e.target.value)}
-          className="w-full border p-2 rounded"
-          required
-        />
+        {/* Title */}
+        <div>
+          <input
+            type="text"
+            placeholder="Title"
+            value={title}
+            maxLength={TITLE_LIMIT}
+            onChange={(e) => setTitle(e.target.value)}
+            className="w-full border p-2 rounded"
+            required
+          />
+          <p className="text-sm text-gray-500">
+            {title.length}/{TITLE_LIMIT}
+          </p>
+        </div>
+
+        {/* Excerpt */}
+        <div>
+          <input
+            type="text"
+            placeholder="Excerpt"
+            value={excerpt}
+            maxLength={EXCERPT_LIMIT}
+            onChange={(e) => setExcerpt(e.target.value)}
+            className="w-full border p-2 rounded"
+            required
+          />
+          <p className="text-sm text-gray-500">
+            {excerpt.length}/{EXCERPT_LIMIT}
+          </p>
+        </div>
+
+        {/* Content */}
+        <div>
+          <label className="block text-sm font-medium mb-1">Content</label>
+          <textarea
+            placeholder="Content"
+            value={content}
+            maxLength={CONTENT_LIMIT}
+            onChange={(e) => setContent(e.target.value)}
+            className="w-full border p-2 rounded h-40"
+            required
+          />
+          <p className="text-sm text-gray-500">
+            {content.length}/{CONTENT_LIMIT}
+          </p>
+        </div>
+
+        {/* Image URL */}
+        <div>
+          <input
+            type="text"
+            placeholder="Image URL"
+            value={image}
+            maxLength={IMAGE_LIMIT}
+            onChange={(e) => setImage(e.target.value)}
+            className="w-full border p-2 rounded"
+          />
+          <p className="text-sm text-gray-500">
+            {image.length}/{IMAGE_LIMIT}
+          </p>
+        </div>
+
+        {/* Author */}
+        <div>
+          <input
+            type="text"
+            placeholder="Author"
+            value={author}
+            maxLength={AUTHOR_LIMIT}
+            onChange={(e) => setAuthor(e.target.value)}
+            className="w-full border p-2 rounded"
+            required
+          />
+          <p className="text-sm text-gray-500">
+            {author.length}/{AUTHOR_LIMIT}
+          </p>
+        </div>
+
         <button
           type="submit"
           className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
