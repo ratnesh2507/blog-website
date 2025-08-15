@@ -51,7 +51,17 @@ function EditPost() {
   };
 
   if (!post) {
-    return <p className="p-6 text-red-500 mt-20">Post not found.</p>;
+    return (
+      <div className="p-6 mt-20">
+        <Link
+          to="/admin/posts"
+          className="flex items-center gap-2 text-blue-600 mb-6 hover:underline"
+        >
+          <FaArrowLeft /> Back to Posts
+        </Link>
+        <p className="p-6 text-red-500 mt-20">Post not found.</p>
+      </div>
+    );
   }
 
   return (
