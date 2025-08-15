@@ -6,7 +6,7 @@ export default function BlogList() {
   const posts = useSelector((state) => state.posts.posts);
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10">
+    <div className="max-w-6xl mx-auto px-6 py-10 mt-20">
       {/* Back Button */}
       <Link
         to="/"

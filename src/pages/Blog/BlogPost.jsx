@@ -10,14 +10,14 @@ export default function BlogPost() {
 
   if (!post) {
     return (
-      <div className="p-6 text-center">
+      <div className="p-6 text-center mt-20">
         <h2 className="text-2xl font-bold text-red-500">Post not found</h2>
       </div>
     );
   }
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-10">
+    <div className="max-w-4xl mx-auto px-6 py-10 mt-20">
       <Link
         to="/blog"
         className="flex items-center gap-2 text-blue-600 mb-6 hover:underline"
