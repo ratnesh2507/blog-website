@@ -1,3 +1,6 @@
+import { useDispatch, useSelector } from "react-redux";
+import { loginAsAdmin, logout } from "../store/slices/authSlice";
+
 function useAuth() {
   const dispatch = useDispatch();
   const isAdmin = useSelector((state) => state.auth.isAdmin);
@@ -11,3 +14,4 @@ function useAuth() {
     logout,
   };
 }
+export default useAuth;

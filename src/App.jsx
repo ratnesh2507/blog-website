@@ -15,6 +15,7 @@ import NewPost from "./pages/Admin/NewPost";
 // Route Protection
 import PrivateRoute from "./routes/PrivateRoute";
 import EditPost from "./pages/Admin/EditPost";
+import AdminLogin from "./pages/Admin/AdminLogin";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         {/* Public routes */}
         <Route path="/blog" element={<BlogList />} />
         <Route path="/blog/:slug" element={<BlogPost />} />
+        <Route path="/admin/login" element={<AdminLogin />} />
 
         {/* Admin routes (protected) */}
         <Route
