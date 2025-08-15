@@ -7,7 +7,7 @@ export default function Home() {
   const posts = useSelector((state) => state.posts.posts);
 
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-gray-50 min-h-screen mt-5">
       {/* Hero Section */}
       <section className="bg-white shadow-sm">
         <div className="max-w-6xl mx-auto px-6 py-16 text-center">
