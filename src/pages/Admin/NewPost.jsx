@@ -33,7 +33,7 @@ function NewPost() {
   };
 
   return (
-    <div className="p-6 m-20">
+    <div className="p-6 mt-20">
       <div className="flex gap-3">
         <Link
           to="/admin"
