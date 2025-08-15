@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { updatePost } from "../../store/slices/postsSlice";
+import { FaArrowLeft } from "react-icons/fa";
 
 function EditPost() {
   const { id } = useParams();
@@ -42,11 +43,17 @@ function EditPost() {
   };
 
   if (!post) {
-    return <p className="p-6 text-red-500">Post not found.</p>;
+    return <p className="p-6 text-red-500 mt-20">Post not found.</p>;
   }
 
   return (
-    <div className="p-6">
+    <div className="p-6 mt-20">
+      <Link
+        to="/admin/posts"
+        className="flex items-center gap-2 text-blue-600 mb-6 hover:underline"
+      >
+        <FaArrowLeft /> Back to Posts
+      </Link>
       <h2 className="text-2xl font-bold mb-4">Edit Post</h2>
       <form onSubmit={handleSubmit} className="space-y-4 max-w-2xl">
         <input
