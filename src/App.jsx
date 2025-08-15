@@ -1,3 +1,4 @@
+import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // Public pages
@@ -17,6 +18,7 @@ import PrivateRoute from "./routes/PrivateRoute";
 function App() {
   return (
     <Router>
+      <Navbar />
       <Routes>
         {/* Home page */}
         <Route path="/" element={<Home />} />

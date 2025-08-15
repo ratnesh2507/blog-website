@@ -11,7 +11,8 @@ export default function Home() {
       <section className="bg-white shadow-sm">
         <div className="max-w-6xl mx-auto px-6 py-16 text-center">
           <h1 className="text-5xl font-bold text-gray-900">
-            Welcome to <span className="text-blue-600">React Blog</span>
+            Welcome to{" "}
+            <span className="text-yellow-600">The Curious Corner🕵️‍♂️</span>
           </h1>
           <p className="mt-6 text-lg text-gray-600 max-w-2xl mx-auto">
             Your daily dose of articles, tutorials, and insights from the world
