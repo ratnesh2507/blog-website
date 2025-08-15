@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { mockPosts } from "../../data/posts";
 
 const initialState = {
-  posts: [],
+  posts: mockPosts, // preloading with mock data
 };
 
 const postsSlice = createSlice({

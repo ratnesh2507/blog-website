@@ -1,0 +1,32 @@
+export const mockPosts = [
+  {
+    id: 1,
+    title: "Getting Started with React",
+    slug: "getting-started-with-react",
+    excerpt: "Learn the basics of React, including components, JSX, and props.",
+    content: "React is a JavaScript library for building user interfaces...",
+    image: "https://picsum.photos/400/250?random=1",
+    date: "2025-08-10",
+    author: "Admin",
+  },
+  {
+    id: 2,
+    title: "Understanding Redux Toolkit",
+    slug: "understanding-redux-toolkit",
+    excerpt: "A complete guide to managing global state with Redux Toolkit.",
+    content: "Redux Toolkit simplifies Redux by providing a set of tools...",
+    image: "https://picsum.photos/400/250?random=2",
+    date: "2025-08-12",
+    author: "Admin",
+  },
+  {
+    id: 3,
+    title: "TailwindCSS Tips & Tricks",
+    slug: "tailwindcss-tips-tricks",
+    excerpt: "Boost your UI development with these TailwindCSS shortcuts.",
+    content: "TailwindCSS is a utility-first CSS framework that allows...",
+    image: "https://picsum.photos/400/250?random=3",
+    date: "2025-08-14",
+    author: "Admin",
+  },
+];

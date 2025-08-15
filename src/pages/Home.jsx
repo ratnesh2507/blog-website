@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { FaArrowRight, FaBlog, FaUserShield } from "react-icons/fa";
 
-function Home() {
+export default function Home() {
+  const posts = useSelector((state) => state.posts.posts);
+
   return (
     <div className="bg-gray-50 min-h-screen">
       {/* Hero Section */}
@@ -38,26 +41,23 @@ function Home() {
         </h2>
 
         <div className="grid gap-8 md:grid-cols-3">
-          {[1, 2, 3].map((post) => (
+          {posts.slice(0, 3).map((post) => (
             <div
-              key={post}
+              key={post.id}
               className="bg-white shadow-sm rounded-lg overflow-hidden hover:shadow-md transition"
             >
               <img
-                src={`https://picsum.photos/400/250?random=${post}`}
-                alt="Post thumbnail"
+                src={post.image}
+                alt={post.title}
                 className="w-full h-48 object-cover"
               />
               <div className="p-5">
                 <h3 className="text-lg font-semibold text-gray-900">
-                  Sample Blog Post {post}
+                  {post.title}
                 </h3>
-                <p className="text-sm text-gray-600 mt-2">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Integer nec odio. Praesent libero.
-                </p>
+                <p className="text-sm text-gray-600 mt-2">{post.excerpt}</p>
                 <Link
-                  to={`/blog/sample-post-${post}`}
+                  to={`/blog/${post.slug}`}
                   className="inline-flex items-center gap-1 text-blue-600 mt-4 text-sm hover:underline"
                 >
                   Read More <FaArrowRight size={12} />
@@ -70,5 +70,3 @@ function Home() {
     </div>
   );
 }
-
-export default Home;
