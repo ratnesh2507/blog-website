@@ -45,13 +45,13 @@ export default function Home() {
           >
             <Link
               to="/blog"
-              className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition"
+              className="inline-flex items-center gap-2 hover:cursor-pointer bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition"
             >
               <FaBlog /> View Blog
             </Link>
             <Link
-              to="/admin"
-              className="inline-flex items-center gap-2 border border-gray-300 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-100 transition"
+              to="/admin/login"
+              className="inline-flex items-center gap-2 hover:cursor-pointer border border-gray-300 hover:bg-green-700 text-gray-700 hover:text-white px-6 py-3 rounded-lg transition"
             >
               <FaUserShield /> Admin Login
             </Link>

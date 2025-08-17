@@ -6,7 +6,7 @@ function BlogCard({ post }) {
     <Link
       to={`/blog/${post.slug}`}
       className="block bg-white shadow-sm rounded-lg overflow-hidden hover:shadow-md 
-                 transition-transform transform hover:scale-105 duration-300"
+                 transition-transform transform hover:scale-105 duration-300 hover:cursor-pointer"
     >
       {/* Blog Image */}
       <img

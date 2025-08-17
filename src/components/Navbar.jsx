@@ -72,7 +72,7 @@ export default function Navbar() {
               <NavLink
                 to="/admin"
                 className={({ isActive }) =>
-                  `flex items-center gap-2 transition-colors ${
+                  `flex items-center gap-2 transition-colors hover:cursor-pointer ${
                     isActive
                       ? "text-yellow-600 font-semibold"
                       : "text-gray-700 hover:text-blue-500"
@@ -83,7 +83,7 @@ export default function Navbar() {
               </NavLink>
               <button
                 onClick={handleLogout}
-                className="flex items-center gap-2 text-gray-700 hover:text-red-500 transition-colors"
+                className="flex items-center gap-2 text-gray-700 hover:cursor-pointer hover:text-red-500 transition-colors"
               >
                 <FaSignOutAlt /> Logout
               </button>
@@ -91,7 +91,7 @@ export default function Navbar() {
           ) : (
             <button
               onClick={handleLogin}
-              className="flex items-center gap-2 text-gray-700 hover:text-green-600 transition-colors"
+              className="flex items-center gap-2 text-gray-700 hover:text-green-600 hover:cursor-pointer transition-colors"
             >
               <FaUserShield /> Admin Login
             </button>

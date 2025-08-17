@@ -14,7 +14,7 @@ function AdminDashboard() {
         {/* Manage Posts */}
         <Link
           to="/admin/posts"
-          className="flex flex-col items-center justify-center bg-white border rounded-2xl p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+          className="flex flex-col items-center justify-center hover:cursor-pointer bg-white border rounded-2xl p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
         >
           <FaClipboardList className="text-5xl text-blue-600 mb-4" />
           <h2 className="text-xl font-semibold text-gray-800">
