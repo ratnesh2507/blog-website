@@ -1,10 +1,20 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import BlogCard from "../../components/BlogCard";
 
 export default function BlogList() {
   const posts = useSelector((state) => state.posts.posts);
+
+  // Pagination state
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 10;
+
+  // Calculate pagination values
+  const totalPages = Math.ceil(posts.length / postsPerPage);
+  const startIndex = (currentPage - 1) * postsPerPage;
+  const currentPosts = posts.slice(startIndex, startIndex + postsPerPage);
 
   return (
     <div className="max-w-7xl mx-auto px-6 py-12 mt-20">
@@ -23,11 +33,34 @@ export default function BlogList() {
 
       {/* Posts Grid */}
       {posts.length > 0 ? (
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-          {posts.map((post) => (
-            <BlogCard key={post.id} post={post} />
-          ))}
-        </div>
+        <>
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+            {currentPosts.map((post) => (
+              <BlogCard key={post.id} post={post} />
+            ))}
+          </div>
+
+          {/* Pagination Controls */}
+          <div className="flex justify-center items-center gap-3 mt-10">
+            <button
+              onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+              disabled={currentPage === 1}
+              className="px-4 py-2 bg-gray-200 rounded-lg disabled:opacity-50 hover:bg-gray-300 transition-colors"
+            >
+              Prev
+            </button>
+            <span className="font-medium">
+              Page {currentPage} of {totalPages}
+            </span>
+            <button
+              onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
+              disabled={currentPage === totalPages}
+              className="px-4 py-2 bg-gray-200 rounded-lg disabled:opacity-50 hover:bg-gray-300 transition-colors"
+            >
+              Next
+            </button>
+          </div>
+        </>
       ) : (
         <div className="text-center py-16 bg-gray-50 rounded-2xl shadow-inner">
           <p className="text-gray-500 text-lg">
