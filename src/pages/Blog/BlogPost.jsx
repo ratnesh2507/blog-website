@@ -17,18 +17,18 @@ export default function BlogPost() {
   }
 
   return (
-    <div className="max-w-5xl mx-auto px-6 py-12 mt-20">
+    <div className="max-w-4xl mx-auto px-6 py-12 mt-20">
       {/* Back Button */}
       <Link
         to="/blog"
-        className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium transition-colors mb-8"
+        className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium transition-colors mb-10"
       >
         <FaArrowLeft className="text-sm" /> Back to Blog
       </Link>
 
-      <article className="bg-white rounded-2xl shadow-lg overflow-hidden p-8">
+      <article>
         {/* Title */}
-        <h1 className="text-5xl font-extrabold text-gray-900 leading-snug mb-6">
+        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-6">
           {post.title}
         </h1>
 
@@ -39,16 +39,16 @@ export default function BlogPost() {
         </p>
 
         {/* Featured Image */}
-        <div className="mb-8">
+        <div className="mb-10">
           <img
             src={post.image}
             alt={post.title}
-            className="w-full h-[28rem] object-cover rounded-xl shadow-md"
+            className="w-full h-[26rem] object-cover"
           />
         </div>
 
         {/* Content */}
-        <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+        <div className="prose prose-lg max-w-none text-gray-800 leading-relaxed">
           {post.content}
         </div>
       </article>
