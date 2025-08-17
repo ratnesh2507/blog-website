@@ -17,23 +17,41 @@ export default function BlogPost() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-10 mt-20">
+    <div className="max-w-5xl mx-auto px-6 py-12 mt-20">
+      {/* Back Button */}
       <Link
         to="/blog"
-        className="flex items-center gap-2 text-blue-600 mb-6 hover:underline"
+        className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium transition-colors mb-8"
       >
-        <FaArrowLeft /> Back to Blog
+        <FaArrowLeft className="text-sm" /> Back to Blog
       </Link>
-      <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
-      <p className="text-sm text-gray-500 mb-6">
-        By {post.author} on {post.date}
-      </p>
-      <img
-        src={post.image}
-        alt={post.title}
-        className="w-full h-80 object-cover rounded-lg mb-6"
-      />
-      <p className="text-gray-700 leading-relaxed">{post.content}</p>
+
+      <article className="bg-white rounded-2xl shadow-lg overflow-hidden p-8">
+        {/* Title */}
+        <h1 className="text-5xl font-extrabold text-gray-900 leading-snug mb-6">
+          {post.title}
+        </h1>
+
+        {/* Meta Info */}
+        <p className="text-sm text-gray-500 mb-8">
+          ✍️ By <span className="font-medium text-gray-700">{post.author}</span>{" "}
+          • {post.date}
+        </p>
+
+        {/* Featured Image */}
+        <div className="mb-8">
+          <img
+            src={post.image}
+            alt={post.title}
+            className="w-full h-[28rem] object-cover rounded-xl shadow-md"
+          />
+        </div>
+
+        {/* Content */}
+        <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+          {post.content}
+        </div>
+      </article>
     </div>
   );
 }
