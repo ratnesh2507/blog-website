@@ -16,8 +16,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleLogin = () => {
-    login(); // fake login
-    navigate("/admin");
+    navigate("/admin/login");
     setIsOpen(false);
   };
 
