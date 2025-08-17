@@ -49,57 +49,65 @@ function EditPost() {
 
   if (!post) {
     return (
-      <div className="p-6 mt-20">
+      <div className="p-6 mt-20 max-w-3xl mx-auto">
         <Link
           to="/admin/posts"
           className="flex items-center gap-2 text-blue-600 mb-6 hover:underline"
         >
           <FaArrowLeft /> Back to Posts
         </Link>
-        <p className="p-6 text-red-500 mt-20">Post not found.</p>
+        <p className="p-6 text-red-500 mt-10 bg-red-50 rounded-lg">
+          Post not found.
+        </p>
       </div>
     );
   }
 
   return (
-    <div className="p-6 mt-20">
+    <div className="p-6 mt-20 max-w-3xl mx-auto">
+      {/* Back Link */}
       <Link
         to="/admin/posts"
         className="flex items-center gap-2 text-blue-600 mb-6 hover:underline"
       >
         <FaArrowLeft /> Back to Posts
       </Link>
-      <h2 className="text-2xl font-bold mb-4">Edit Post</h2>
 
-      <form onSubmit={handleSubmit} className="space-y-4 max-w-2xl">
+      <h2 className="text-3xl font-bold mb-6">✏️ Edit Post</h2>
+
+      {/* Form */}
+      <form
+        onSubmit={handleSubmit}
+        className="space-y-6 bg-white shadow-lg rounded-lg p-6 border"
+      >
         {/* Title */}
         <div>
+          <label className="block text-sm font-medium mb-1">Title</label>
           <input
             type="text"
-            placeholder="Title"
             value={title}
             maxLength={TITLE_LIMIT}
             onChange={(e) => setTitle(e.target.value)}
-            className="w-full border p-2 rounded"
+            className="w-full border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
             required
           />
-          <p className="text-sm text-gray-500">
+          <p className="text-xs text-gray-500 mt-1">
             {title.length}/{TITLE_LIMIT}
           </p>
         </div>
 
         {/* Excerpt */}
         <div>
+          <label className="block text-sm font-medium mb-1">Excerpt</label>
           <input
             type="text"
-            placeholder="Excerpt"
             value={excerpt}
             maxLength={EXCERPT_LIMIT}
             onChange={(e) => setExcerpt(e.target.value)}
-            className="w-full border p-2 rounded"
+            className="w-full border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
             required
           />
-          <p className="text-sm text-gray-500">
+          <p className="text-xs text-gray-500 mt-1">
             {excerpt.length}/{EXCERPT_LIMIT}
           </p>
         </div>
@@ -108,54 +116,54 @@ function EditPost() {
         <div>
           <label className="block text-sm font-medium mb-1">Content</label>
           <textarea
-            placeholder="Content"
             value={content}
             maxLength={CONTENT_LIMIT}
             onChange={(e) => setContent(e.target.value)}
-            className="w-full border p-2 rounded h-40"
+            className="w-full border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none h-48"
             required
           />
-          <p className="text-sm text-gray-500">
+          <p className="text-xs text-gray-500 mt-1">
             {content.length}/{CONTENT_LIMIT}
           </p>
         </div>
 
-        {/* Image URL */}
+        {/* Image */}
         <div>
+          <label className="block text-sm font-medium mb-1">Image URL</label>
           <input
             type="text"
-            placeholder="Image URL"
             value={image}
             maxLength={IMAGE_LIMIT}
             onChange={(e) => setImage(e.target.value)}
-            className="w-full border p-2 rounded"
+            className="w-full border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
           />
-          <p className="text-sm text-gray-500">
+          <p className="text-xs text-gray-500 mt-1">
             {image.length}/{IMAGE_LIMIT}
           </p>
         </div>
 
         {/* Author */}
         <div>
+          <label className="block text-sm font-medium mb-1">Author</label>
           <input
             type="text"
-            placeholder="Author"
             value={author}
             maxLength={AUTHOR_LIMIT}
             onChange={(e) => setAuthor(e.target.value)}
-            className="w-full border p-2 rounded"
+            className="w-full border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
             required
           />
-          <p className="text-sm text-gray-500">
+          <p className="text-xs text-gray-500 mt-1">
             {author.length}/{AUTHOR_LIMIT}
           </p>
         </div>
 
+        {/* Submit */}
         <button
           type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+          className="w-full bg-blue-600 text-white font-semibold px-4 py-3 rounded-lg hover:bg-blue-700 transition"
         >
-          Update Post
+          💾 Update Post
         </button>
       </form>
     </div>

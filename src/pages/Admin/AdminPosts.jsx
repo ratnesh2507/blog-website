@@ -13,58 +13,73 @@ function AdminPosts() {
 
   return (
     <div className="p-6 mt-20">
-      <div className="flex justify-between items-center mb-4">
+      {/* Header */}
+      <div className="flex items-center justify-between mb-8">
         <Link
           to="/admin"
-          className="flex items-center gap-2 text-blue-600 mb-6 hover:underline"
+          className="flex items-center gap-2 text-yellow-600 hover:text-yellow-700 font-medium transition-colors"
         >
           <FaArrowLeft /> Back to Dashboard
         </Link>
-        <h2 className="text-2xl font-bold">Manage Blog Posts</h2>
+
+        <h2 className="text-2xl font-bold text-gray-800">Manage Blog Posts</h2>
+
         <Link
           to="/admin/posts/new"
-          className="bg-yellow-600 text-white px-4 py-2 rounded hover:bg-yellow-700"
+          className="bg-yellow-600 hover:bg-yellow-700 text-white px-4 py-2 rounded-lg font-medium shadow transition-colors"
         >
           + New Post
         </Link>
       </div>
 
+      {/* Table */}
       {posts.length === 0 ? (
-        <p>No posts found.</p>
+        <div className="text-center py-10 bg-gray-50 rounded-lg border">
+          <p className="text-gray-500">No posts found.</p>
+        </div>
       ) : (
-        <table className="w-full border">
-          <thead>
-            <tr className="bg-gray-100">
-              <th className="p-2 border">Title</th>
-              <th className="p-2 border">Author</th>
-              <th className="p-2 border">Date</th>
-              <th className="p-2 border">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {posts.map((post) => (
-              <tr key={post.id}>
-                <td className="p-2 border">{post.title}</td>
-                <td className="p-2 border">{post.author}</td>
-                <td className="p-2 border">{post.date}</td>
-                <td className="p-2 border flex gap-2">
-                  <Link
-                    to={`/admin/posts/edit/${post.id}`}
-                    className="text-blue-700 hover:underline flex items-center gap-1"
-                  >
-                    <FaEdit /> Edit
-                  </Link>
-                  <button
-                    onClick={() => handleDelete(post.id)}
-                    className="text-red-600 hover:underline flex items-center gap-1"
-                  >
-                    <FaTrash /> Delete
-                  </button>
-                </td>
+        <div className="overflow-x-auto bg-white shadow rounded-lg border">
+          <table className="w-full text-left border-collapse">
+            <thead>
+              <tr className="bg-gray-100 text-gray-700 text-sm uppercase tracking-wide">
+                <th className="p-3">Title</th>
+                <th className="p-3">Author</th>
+                <th className="p-3">Date</th>
+                <th className="p-3 text-center">Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {posts.map((post) => (
+                <tr
+                  key={post.id}
+                  className="border-t hover:bg-gray-50 transition-colors"
+                >
+                  <td className="p-3 font-medium text-gray-800">
+                    {post.title}
+                  </td>
+                  <td className="p-3 text-gray-600">{post.author}</td>
+                  <td className="p-3 text-gray-500">{post.date}</td>
+                  <td className="p-3">
+                    <div className="flex items-center justify-center gap-4">
+                      <Link
+                        to={`/admin/posts/edit/${post.id}`}
+                        className="flex items-center gap-1 text-blue-600 hover:text-blue-800 transition-colors"
+                      >
+                        <FaEdit /> Edit
+                      </Link>
+                      <button
+                        onClick={() => handleDelete(post.id)}
+                        className="flex items-center gap-1 text-red-600 hover:text-red-800 transition-colors"
+                      >
+                        <FaTrash /> Delete
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );
