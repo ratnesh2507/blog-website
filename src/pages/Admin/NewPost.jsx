@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 import { nanoid } from "@reduxjs/toolkit";
 import usePosts from "../../hooks/usePosts";
+import PostPreview from "../../components/PostPreview";
 
 function NewPost() {
   const [title, setTitle] = useState("");
@@ -33,8 +34,9 @@ function NewPost() {
   };
 
   return (
-    <div className="p-6 mt-20 flex justify-center">
-      <div className="w-full max-w-2xl bg-white shadow-md rounded-2xl p-6">
+    <div className="p-6 mt-20 flex flex-col lg:flex-row gap-8">
+      {/* --- Form Section --- */}
+      <div className="w-full lg:w-2/3 bg-white shadow-md rounded-2xl p-6">
         {/* Back links */}
         <div className="flex gap-4 mb-6">
           <Link
@@ -149,6 +151,17 @@ function NewPost() {
             Save Post
           </button>
         </form>
+      </div>
+
+      {/* Preview Section */}
+      <div className="w-full lg:w-1/3">
+        <PostPreview
+          title={title}
+          excerpt={excerpt}
+          content={content}
+          image={image}
+          author={author}
+        />
       </div>
     </div>
   );
