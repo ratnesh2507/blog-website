@@ -2,6 +2,7 @@ import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import { useNavigate, Link } from "react-router-dom";
 import { FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
+import toast from "react-hot-toast";
 
 export default function AdminLogin() {
   const { login } = useAuth();
@@ -14,8 +15,9 @@ export default function AdminLogin() {
     if (password === "admin123") {
       login();
       navigate("/admin");
+      toast.success("Welcome back, Admin!");
     } else {
-      alert("Invalid password!");
+      toast.error("Invalid password!");
     }
   };
 

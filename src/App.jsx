@@ -1,5 +1,6 @@
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
 // Public pages
 import Home from "./pages/Home";
@@ -66,6 +67,30 @@ function App() {
         {/* Error route */}
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Toaster
+        position="top-center"
+        toastOptions={{
+          style: {
+            fontSize: "16px",
+            padding: "16px 20px",
+            minWidth: "280px",
+            borderRadius: "10px",
+          },
+          success: {
+            style: {
+              background: "#fef3c7",
+              color: "#92400e",
+            },
+          },
+          error: {
+            style: {
+              background: "#fee2e2",
+              color: "#991b1b",
+            },
+          },
+        }}
+        reverseOrder={false}
+      />
     </Router>
   );
 }
