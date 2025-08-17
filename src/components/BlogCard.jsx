@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
-import { FaArrowRight, FaCalendarAlt, FaUser } from "react-icons/fa";
+import { FaCalendarAlt, FaUser } from "react-icons/fa";
 
 function BlogCard({ post }) {
   return (
-    <div
-      className="bg-white shadow-sm rounded-lg overflow-hidden hover:shadow-md 
+    <Link
+      to={`/blog/${post.slug}`}
+      className="block bg-white shadow-sm rounded-lg overflow-hidden hover:shadow-md 
                  transition-transform transform hover:scale-105 duration-300"
     >
       {/* Blog Image */}
@@ -28,18 +29,14 @@ function BlogCard({ post }) {
           </span>
         </div>
 
-        {/* Excerpt */}
-        <p className="text-sm text-gray-600 mt-2">{post.excerpt}</p>
-
-        {/* Read More Link */}
-        <Link
-          to={`/blog/${post.slug}`}
-          className="inline-flex items-center gap-1 text-blue-600 mt-4 text-sm hover:underline"
-        >
-          Read More <FaArrowRight size={12} />
-        </Link>
+        {/* Excerpt with "..." */}
+        <p className="text-sm text-gray-600 mt-2">
+          {post.excerpt.length > 100
+            ? post.excerpt.substring(0, 100) + "..."
+            : post.excerpt + "..."}
+        </p>
       </div>
-    </div>
+    </Link>
   );
 }
 
